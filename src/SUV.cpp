@@ -2,7 +2,7 @@
 // Created by Maia Sapunaru on 22.05.2025.
 //
 
-#include "SUV.h"
+#include "../include/SUV.h"
 
 SUV::SUV(const std::string& name) : Car(name, 130) {}
 

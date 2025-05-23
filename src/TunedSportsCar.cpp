@@ -2,7 +2,7 @@
 // Created by Maia Sapunaru on 22.05.2025.
 //
 
-#include "TunedSportsCar.h"
+#include "../include/TunedSportsCar.h"
 
 TunedSportsCar::TunedSportsCar(const std::string& name) : SportsCar(name) {
     accelerate(10);

@@ -2,7 +2,7 @@
 // Created by Maia Sapunaru on 22.05.2025.
 //
 
-#include "Track.h"
+#include "../include/Track.h"
 #include<iostream>
 
 Track::Track(const std::string& type, float difficulty, int nrCurves, const std::string& weather) :
