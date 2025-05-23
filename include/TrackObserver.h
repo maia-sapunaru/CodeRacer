@@ -4,7 +4,7 @@
 
 #ifndef TRACKOBSERVER_H
 #define TRACKOBSERVER_H
-#include "Track.h"
+#include "../include/Track.h"
 
 
 class TrackObserver {
