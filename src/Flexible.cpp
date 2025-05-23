@@ -2,7 +2,7 @@
 // Created by Maia Sapunaru on 22.05.2025.
 //
 
-#include "Flexible.h"
+#include "../include/Flexible.h"
 
 void Flexible::updateFromTrack(const Track& track) {
     if(track.getWeather() == "rainy" || track.getDifficulty() > 10)
