@@ -2,7 +2,7 @@
 // Created by Maia Sapunaru on 22.05.2025.
 //
 
-#include "Car.h"
+#include "../include/Car.h"
 
 Car::Car(const std::string& name, float fuel) : name(name), speed(0), fuel(fuel) {}
 Car::~Car() {}
@@ -21,7 +21,7 @@ void Car::display(std::ostream& out) const {
     out << "Car: " << name << " " << " Spped: " << speed << " fuel: " << fuel;
 }
 
-const std::string& Vechicle::getName() const { return name; }
+const std::string& Car::getName() const { return name; }
 float Car::getSpeed() const { return speed; }
 float Car::getFuel() const { return fuel; }
 

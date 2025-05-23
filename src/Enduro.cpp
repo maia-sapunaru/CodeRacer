@@ -2,7 +2,7 @@
 // Created by Maia Sapunaru on 22.05.2025.
 //
 
-#include "Enduro.h"
+#include "../include/Enduro.h"
 
 Enduro::Enduro(const std::string& name) : Car(name, 130) {}
 
