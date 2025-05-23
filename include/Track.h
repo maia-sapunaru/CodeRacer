@@ -6,8 +6,8 @@
 #define TRACK_H
 #include<string>
 #include<vector>
-#include "TrackObserver.h"
-
+#include "../include/TrackObserver.h"
+class TrackObserver;
 
 class Track {
 private:

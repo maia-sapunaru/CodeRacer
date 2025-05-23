@@ -5,12 +5,12 @@
 #ifndef TRACKOBSERVER_H
 #define TRACKOBSERVER_H
 #include "../include/Track.h"
-
+class Track;
 
 class TrackObserver {
 public:
     virtual void trackUpdate(const Track& track) = 0;
-    virtual ~TrackObserver() {};
+    virtual ~TrackObserver() {}
 };
 
 
