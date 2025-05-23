@@ -25,10 +25,10 @@ std::ostream& operator<<(std::ostream& out, const Track& track) {
 }
 
 void Track::addObserver (TrackObserver* observer) {
-  observers.push_back(observer);
+  obs.push_back(observer);
 }
 void Track::notifyObservers() {
-  for (auto* observer : observers) observer->trackUpdate(*this);
+  for (auto* observer : obs) observer->trackUpdate(*this);
 }
 
 void Track::setWeather(const std::string& weather) {

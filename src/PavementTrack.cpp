@@ -2,7 +2,7 @@
 // Created by Maia Sapunaru on 22.05.2025.
 //
 
-#include "../include/PavementTrack.h""
+#include "../include/PavementTrack.h"
 
 PavementTrack :: PavementTrack(int nrCurves, const std::string& weather) :
  Track("Pavement", 1.0f, nrCurves, weather) {}

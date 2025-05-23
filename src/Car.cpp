@@ -4,8 +4,30 @@
 
 #include "../include/Car.h"
 
-Car::Car(const std::string& name, float fuel) : name(name), speed(0), fuel(fuel) {}
+int Car::carNumber = 0;
+float Car::totalDistance = 0;
+
+Car::Car(const std::string& name, float fuel) : name(name), speed(0), fuel(fuel) {
+    carNumber++;
+}
 Car::~Car() {}
+
+float Car::getTotalDistance() {
+    return totalDistance;
+}
+
+void Car::addDistance(float km) {
+    totalDistance += km;
+}
+
+
+int Car::getCarNumber() {
+    return carNumber;
+}
+
+
+
+
 
 void Car::accelerate(float amount) {
     speed += amount;
@@ -25,8 +47,8 @@ const std::string& Car::getName() const { return name; }
 float Car::getSpeed() const { return speed; }
 float Car::getFuel() const { return fuel; }
 
-std::ostream& operator << (std::ostream& out, const Car& vehicle) {
-  vehicle.display(out);
+std::ostream& operator << (std::ostream& out, const Car& car) {
+  car.display(out);
   return out;
 }
 

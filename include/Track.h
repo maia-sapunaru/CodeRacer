@@ -11,7 +11,7 @@ class TrackObserver;
 
 class Track {
 private:
-    std::vector<TrackObserver*> observers;
+    std::vector<TrackObserver*> obs;
 
 protected:
     std::string surface;

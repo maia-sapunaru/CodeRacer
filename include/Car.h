@@ -9,13 +9,21 @@
 
 
 class Car {
+  static int carNumber;
+  static float totalDistance;
+
   protected:
     std::string name;
     float speed;
     float fuel;
-  public:
+public:
     Car(const std::string& name, float fuel);
     virtual ~Car();
+
+
+    static int getCarNumber();
+    static float getTotalDistance();
+    void addDistance(float km);
 
     virtual void accelerate(float amount);
     virtual void consumeFuel(float amount);
@@ -27,7 +35,7 @@ class Car {
     float getFuel() const;
     float getSpeed() const;
 
-    friend std::ostream& operator<<(std::ostream& os, const Car& vehicle);
+    friend std::ostream& operator<<(std::ostream& out, const Car& car);
 };
 
 
