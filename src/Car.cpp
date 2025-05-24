@@ -3,6 +3,7 @@
 //
 
 #include "../include/Car.h"
+#include "../include/Overheated.h"
 
 int Car::carNumber = 0;
 float Car::totalDistance = 0;
@@ -10,7 +11,9 @@ float Car::totalDistance = 0;
 Car::Car(const std::string& name, float fuel) : name(name), speed(0), fuel(fuel) {
     carNumber++;
 }
-Car::~Car() {}
+Car::~Car() {
+    carNumber--;
+}
 
 float Car::getTotalDistance() {
     return totalDistance;
@@ -20,16 +23,14 @@ void Car::addDistance(float km) {
     totalDistance += km;
 }
 
-
 int Car::getCarNumber() {
     return carNumber;
 }
 
-
-
-
-
 void Car::accelerate(float amount) {
+    if (speed > 350.0f) {
+        throw Overheated("Motor supraincalzit! Trebuie sa incetiniti sau masina va face boom!");
+    }
     speed += amount;
     consumeFuel(amount * 0.5f);
 }
