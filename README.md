@@ -1,4 +1,5 @@
 # CodeRacer
+# Un simulator de curse cu masini: diferite tipuri de masini, diferite piste si conditii meteo. Un raport bine definit si posibilitati de urmarire a cursei in fiecare secunda.
 
 ### Folosiți template-ul corespunzător grupei voastre!
 
