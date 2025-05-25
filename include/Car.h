@@ -16,8 +16,10 @@ class Car {
     std::string name;
     float speed;
     float fuel;
+    int power;
 public:
-    Car(const std::string& name, float fuel);
+    Car(const std::string& name, float speed, float fuel, int power);
+    Car& operator=(const Car& car);
     virtual ~Car();
 
 
@@ -34,6 +36,13 @@ public:
     const std::string& getName() const;
     float getFuel() const;
     float getSpeed() const;
+    int getPower() const;
+
+    void setName(std::string nam);
+    void setSpeed(float);
+    void setFuel(float);
+    void setPower(int);
+
 
     friend std::ostream& operator<<(std::ostream& out, const Car& car);
 };

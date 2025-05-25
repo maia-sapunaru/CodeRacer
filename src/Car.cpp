@@ -8,11 +8,19 @@
 int Car::carNumber = 0;
 float Car::totalDistance = 0;
 
-Car::Car(const std::string& name, float fuel) : name(name), speed(0), fuel(fuel) {
+Car::Car(const std::string& name, float speed, float fuel, int power) : name(name), speed(speed), fuel(fuel), power(power) {
     carNumber++;
 }
 Car::~Car() {
     carNumber--;
+}
+
+Car& Car::operator=(const Car& rhs) {
+    name = rhs.name;
+    speed = rhs.speed;
+    fuel = rhs.fuel;
+    power = rhs.power;
+    return *this;
 }
 
 float Car::getTotalDistance() {
@@ -26,6 +34,36 @@ void Car::addDistance(float km) {
 int Car::getCarNumber() {
     return carNumber;
 }
+
+int Car::getPower() const {
+    return power;
+}
+
+float Car::getFuel() const{
+    return fuel;
+}
+float Car::getSpeed() const {
+    return speed;
+}
+
+
+
+void Car::setName(const std::string nam) {
+     name = nam;
+}
+
+void Car:: setSpeed(float sp) {
+    speed = sp;
+}
+
+void Car::setFuel(float f) {
+    fuel = f;
+}
+
+void Car::setPower(int p) {
+    power = p;
+}
+
 
 void Car::accelerate(float amount) {
     if (speed > 350.0f) {
@@ -41,13 +79,23 @@ void Car::consumeFuel(float amount) {
 }
 
 void Car::display(std::ostream& out) const {
-    out << "Car: " << name << " " << " Spped: " << speed << " fuel: " << fuel;
+    out << "Car: " << name << " " << " Spped: " << speed << " Fuel: " << fuel << "Power" << power;
 }
 
 const std::string& Car::getName() const { return name; }
-float Car::getSpeed() const { return speed; }
-float Car::getFuel() const { return fuel; }
 
+
+
+std::istream& operator>> (std::istream& in, Car& car) {
+    std::string name;
+    float speed, fuel;
+    int power;
+    in >> name >> speed >> fuel >> power;
+    car.setName(name);
+    car.setSpeed(speed);
+    car.setFuel(fuel);
+    car.setPower(power);
+}
 std::ostream& operator << (std::ostream& out, const Car& car) {
   car.display(out);
   return out;

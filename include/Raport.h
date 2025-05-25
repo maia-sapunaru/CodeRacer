@@ -14,6 +14,7 @@ class Raport {
     std::priority_queue<T*, std::vector<T*>, std::function<bool(T*, T*) >>  pq;
 
 public:
+    Raport();
     Raport(std::function<bool(T*, T*) > comp);
     void add(T* t);
     T* get() const;

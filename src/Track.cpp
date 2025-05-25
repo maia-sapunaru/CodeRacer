@@ -28,7 +28,7 @@ void Track::addObserver (TrackObserver* observer) {
   obs.push_back(observer);
 }
 void Track::notifyObservers() {
-  for (auto* observer : obs) observer->trackUpdate(*this);
+  for (TrackObserver* observer : obs) observer->trackUpdate(*this);
 }
 
 void Track::setWeather(const std::string& weather) {

@@ -1,0 +1,6 @@
+4
+SUV Duster 100 50 120
+SportsCar Ferrari 200 40 180
+Enduro KTM 80 60 90
+TunedCar Skyline 220 30 200
+
