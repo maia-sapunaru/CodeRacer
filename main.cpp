@@ -21,6 +21,7 @@ int main() {
     std::vector<DrivingTechnique*> stiluri;
     Raport<Race> raport;
     static int nrCursa = 0;
+    bool ok = false;
 
     int opt;
     do {
@@ -74,8 +75,10 @@ int main() {
                 dt = new Economical();
             else if (stil == 2)
                 dt = new Aggressive();
-            else if (stil == 3)
+            else if (stil == 3) {
                 dt = new Flexible();
+                ok = true;
+            }
             else {
                 std::cout << "Nu avem acest stil.\n";
                 delete m;
@@ -92,6 +95,42 @@ int main() {
                 continue;
             }
 
+            int nrCurbe;
+            std::string copie, vreme, tip;
+            std::cout << "Ce fel de pista doresti pentru cursa? Optiunile sunt: asfalt sau off-road.\n" << "Raspunsul tau: ";
+            std::cin >> tip;
+            std::cout << "Introdu numarul de curbe al pistei: ";
+            std::cin >> nrCurbe;
+            std::cout << "Introdu vremea de pe pista. Optiunile sunt: insorit, innorat, ploios.  \n" << "raspunsul tau: ";
+
+            std::cin >> copie;
+            if (copie == "insorit")
+                vreme = "sunny";
+            else if (copie == "innorat")
+                vreme = "cloudy";
+            else if (copie == "ploios")
+                vreme = "rainy";
+            else std::cout << "Nu e disponibila aceasta vreme.";
+
+
+
+            Track* pista = nullptr;
+            if (tip == "asfalt")
+                pista = new PavementTrack(nrCurbe, vreme);
+            else if (tip == "off-road")
+                pista = new OffRoadTrack(nrCurbe, vreme);
+            else {
+                std::cout << "Nu avem acest tip de pista!";
+            }
+
+            for (int i =0; i < stiluri.size(); i++) {
+                if (ok) {
+                    Flexible* flex = dynamic_cast<Flexible*>(stiluri[i]);
+                    if (flex != nullptr) {
+                        flex -> updateFromTrack(*pista);
+                    }
+                }
+            }
             Raport<Car> raportCursa;
 
             std::cout << "\nCURSA INCEPE\n";
@@ -130,6 +169,7 @@ int main() {
 
             std::cout << "\nRAPORTUL CURSEI: \n"; // merge, dar nu imi place cum arata, voi reface
             raportCursa.showOrder();
+            delete pista;
 
         } else if (opt == 3) {
             std::cout << "\nRAPORTUL CURSELOR: \n";
