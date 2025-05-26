@@ -13,5 +13,4 @@ public:
 };
 
 
-
 #endif //AGGRESSIVE_H

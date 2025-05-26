@@ -15,15 +15,15 @@ void Flexible::updateFromTrack(const Track& track) {
 
 void Flexible::drive(Car& car) const {
     if(mode == "aggresive") {
-      car.accelerate(14);
+      car.accelerate(14 + car.getPower() * 0.05);
       car.consumeFuel(9);
     }
     else if(mode == "economical") {
-      car.accelerate(6);
+      car.accelerate(6 + car.getPower() * 0.05);
       car.consumeFuel(3);
     }
     else {
-      car.accelerate(10);
+      car.accelerate(10 + car.getPower() * 0.05);
       car.consumeFuel(5);
     }
 }

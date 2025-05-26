@@ -23,7 +23,7 @@ public:
 
 template <typename T>
 Raport<T>::Raport() : pq([](T* a, T* b) {
-    return a->getScore() < b->getScore();  // Comparator: mai mic înseamnă prioritate mai mare
+    return a->getScore() < b->getScore();
 }) {}
 
 
