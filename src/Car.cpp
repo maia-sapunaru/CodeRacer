@@ -69,7 +69,7 @@ void Car::setPower(int p) {
 
 
 void Car::accelerate(float amount) {
-    if (speed > 350.0f) {
+    if (speed > 1000.0f) {
         throw Overheated("Motor supraincalzit! Trebuie sa incetiniti sau masina va face boom!");
     }
     speed += amount;
