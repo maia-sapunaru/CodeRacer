@@ -45,7 +45,7 @@ void Raport<T>::showOrder() const {
     int pos = 1;
     while (!copy.empty()) {
       T* t = copy.top();
-      std::cout << pos++ << ". " << *t << std::endl;
+      std::cout << pos << ". " << *t << std::endl;
       copy.pop();
       pos++;
     }

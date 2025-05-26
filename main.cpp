@@ -14,11 +14,13 @@
 #include "../include/PavementTrack.h"
 #include "../include/OffRoadTrack.h"
 #include "../include/Raport.h"
+#include "../include/Race.h"
 
 int main() {
     std::vector<Car*> masini;
     std::vector<DrivingTechnique*> stiluri;
-    Raport<Car> raportGeneral;
+    Raport<Race> raport;
+    static int nrCursa = 0;
 
     int opt;
     do {
@@ -84,6 +86,7 @@ int main() {
             stiluri.push_back(dt);
 
         } else if (opt == 2) {
+            nrCursa++;
             if (masini.empty()) {
                 std::cout << "Nicio masina in cursa!\n";
                 continue;
@@ -97,9 +100,10 @@ int main() {
 
                 for (int i = 0; i < masini.size(); i++) {
                     stiluri[i]->drive(*masini[i]);
-                    raportCursa.add(masini[i]);
-                    raportGeneral.add(masini[i]);
                 }
+
+
+
 
                 std::vector<Car*> clasament = masini;
                 std::sort(clasament.begin(), clasament.end(), [](Car* a, Car* b) {
@@ -107,20 +111,29 @@ int main() {
                 });
 
                 int loc = 1;
-                for (std::vector<Car*>::iterator it = clasament.begin(); it != clasament.end(); it++) {
-                    Car* m = *it;
+                for (std::vector<Car*>::iterator i = clasament.begin(); i != clasament.end(); i++) {
+                    Car* m = *i;
                     std::cout << loc++ << ". " << *m << " | Scor: " << m->getScore() << '\n';
+
+
+
+                    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
                 }
-
-
-                std::this_thread::sleep_for(std::chrono::milliseconds(1000));
             }
+
+            for (Car* m : masini) {
+                raportCursa.add(m);
+            }
+            Race* cursa = new Race("Cursa " + std::to_string(nrCursa), masini);
+            raport.add(cursa);
+
 
             std::cout << "\nRAPORTUL CURSEI: \n"; // merge, dar nu imi place cum arata, voi reface
             raportCursa.showOrder();
 
         } else if (opt == 3) {
-//de refacut aici
+            std::cout << "\nRAPORTUL CURSELOR: \n";
+            raport.showOrder();
         }
 
     } while (opt != 0);
