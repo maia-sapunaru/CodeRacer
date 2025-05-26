@@ -9,7 +9,7 @@
 
 class Enduro : public Car {
 public:
-  Enduro(const std::string& name);
+  Enduro(const std::string& name, const float& speed, const float& fuel, const int& power);
   float getScore() const override;
 };
 

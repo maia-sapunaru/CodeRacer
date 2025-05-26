@@ -8,6 +8,9 @@
 int Car::carNumber = 0;
 float Car::totalDistance = 0;
 
+Car::Car() : name(""), speed(0), fuel(0), power(0) {
+    carNumber++;
+}
 Car::Car(const std::string& name, float speed, float fuel, int power) : name(name), speed(speed), fuel(fuel), power(power) {
     carNumber++;
 }
@@ -95,6 +98,7 @@ std::istream& operator>> (std::istream& in, Car& car) {
     car.setSpeed(speed);
     car.setFuel(fuel);
     car.setPower(power);
+    return in;
 }
 std::ostream& operator << (std::ostream& out, const Car& car) {
   car.display(out);

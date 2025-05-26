@@ -9,7 +9,7 @@
 
 class SUV : public Car {
 public:
-    SUV(const std::string& name, const float& speed, );
+    SUV(const std::string& name, const float& speed, const float& fuel, const int& power);
     float getScore() const override;
 };
 

@@ -9,7 +9,7 @@
 
 class TunedSportsCar : public SportsCar {
 public:
-    TunedSportsCar(const std::string& name);
+    TunedSportsCar(const std::string& name, const float& speed, const float& fuel, const int& power);
     float getScore() const override;
 };
 

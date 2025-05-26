@@ -18,6 +18,7 @@ class Car {
     float fuel;
     int power;
 public:
+    Car();
     Car(const std::string& name, float speed, float fuel, int power);
     Car& operator=(const Car& car);
     virtual ~Car();

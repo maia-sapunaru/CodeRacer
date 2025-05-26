@@ -15,14 +15,19 @@ class Raport {
 
 public:
     Raport();
-    Raport(std::function<bool(T*, T*) > comp);
+    //Raport(std::function<bool(T*, T*) > comp);
     void add(T* t);
     T* get() const;
     void showOrder() const;
 };
 
 template <typename T>
-Raport<T>::Raport(std::function<bool(T*, T*) > comp) : pq(comp) {}
+Raport<T>::Raport() : pq([](T* a, T* b) {
+    return a->getScore() < b->getScore();  // Comparator: mai mic înseamnă prioritate mai mare
+}) {}
+
+
+//Raport<T>::Raport(std::function<bool(T*, T*) > comp) : pq(comp) {}
 
 template <typename T>
 void Raport<T>::add(T* t) {
@@ -38,7 +43,7 @@ template <typename T>
 void Raport<T>::showOrder() const {
     std::priority_queue<T*, std::vector<T*>, std::function<bool(T*, T*) >> copy = pq;
     int pos = 1;
-    while (!pq.empty()) {
+    while (!copy.empty()) {
       T* t = copy.top();
       std::cout << pos++ << ". " << *t << std::endl;
       copy.pop();

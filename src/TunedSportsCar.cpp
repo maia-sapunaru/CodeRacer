@@ -4,7 +4,7 @@
 
 #include "../include/TunedSportsCar.h"
 
-TunedSportsCar::TunedSportsCar(const std::string& name) : SportsCar(name) {
+TunedSportsCar::TunedSportsCar(const std::string& name, const float& speed, const float& fuel, const int& power) : SportsCar(name, speed, fuel, power) {
     accelerate(10);
 }
 
