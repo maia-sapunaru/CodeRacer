@@ -3,6 +3,7 @@
 #include <vector>
 #include <thread>
 #include <chrono>
+#include <Overheated.h>
 
 #include "../include/SportsCar.h"
 #include "../include/TunedSportsCar.h"
@@ -96,21 +97,34 @@ int main() {
             }
 
             int nrCurbe;
+            int varianta;
+            bool schimbat = 0;
             std::string copie, vreme, tip;
             std::cout << "Ce fel de pista doresti pentru cursa? Optiunile sunt: asfalt sau off-road.\n" << "Raspunsul tau: ";
             std::cin >> tip;
             std::cout << "Introdu numarul de curbe al pistei: ";
             std::cin >> nrCurbe;
-            std::cout << "Introdu vremea de pe pista. Optiunile sunt: insorit, innorat, ploios.  \n" << "raspunsul tau: ";
-
-            std::cin >> copie;
-            if (copie == "insorit")
+            std::cout << "Vrei ca vremea sa fie schimbata in mod aleatoriu pe parcursul cursei (1) sa fie constanta (2)?]n" << "Raspunsul tau: ";
+            std::cin >> varianta;
+            if (varianta == 1) {
+                schimbat = 1;
                 vreme = "sunny";
-            else if (copie == "innorat")
-                vreme = "cloudy";
-            else if (copie == "ploios")
-                vreme = "rainy";
-            else std::cout << "Nu e disponibila aceasta vreme.";
+            }
+            else if (varianta == 2) {
+                std::cout << "Introdu vremea de pe pista. Optiunile sunt: insorit, innorat, ploios.  \n" << "raspunsul tau: ";
+                std::cin >> copie;
+                if (copie == "insorit")
+                    vreme = "sunny";
+                else if (copie == "innorat")
+                    vreme = "cloudy";
+                else if (copie == "ploios")
+                    vreme = "rainy";
+                else std::cout << "Nu e disponibila aceasta vreme.";
+            }
+            else
+                std::cout << "Varianta indisponibila.";
+
+
 
 
 
@@ -137,8 +151,24 @@ int main() {
             for (int sec = 1; sec <= 5; ++sec) {
                 std::cout << "Secunda " << sec << " ---\n";
 
-                for (int i = 0; i < masini.size(); i++) {
-                    stiluri[i]->drive(*masini[i]);
+                try {
+                    for (int i = 0; i < masini.size(); i++) {
+                        Car* masina = masini[i];
+
+                        if (masina->isOverHeated() || masina->finishedFuel()) {
+                            masina->resetScore();
+                            continue;
+                        }
+
+                        stiluri[i]->drive(*masina);
+
+                        if (masina -> getSpeed() > masina->getMaxSpeed()) {
+                            masina->setOverheated(true);
+                            throw Overheated("Masina " + masina->getName() + " s-a supraincalzit si a facut BOOM. Cursele s-au incheiat pe ziua de azi.");
+                        }
+                    }
+                } catch (const Overheated& e) {
+                    std::cout << "eroare";
                 }
 
 
@@ -158,6 +188,7 @@ int main() {
 
                     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
                 }
+                if (schimbat) pista -> randomWeather();
             }
 
             for (Car* m : masini) {
@@ -182,3 +213,4 @@ int main() {
 
     return 0;
 }
+

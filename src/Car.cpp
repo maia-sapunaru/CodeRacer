@@ -87,7 +87,26 @@ void Car::display(std::ostream& out) const {
 
 const std::string& Car::getName() const { return name; }
 
+bool Car::finishedFuel() const {
+    return fuel <= 0;
+}
 
+void Car::resetScore() {
+    score = 0;
+}
+
+
+float Car::getMaxSpeed() const {
+    return 100 * 0.3f * fuel + 0.6f * power;
+}
+
+bool Car::isOverHeated() const {
+    return overheated;
+}
+
+void Car::setOverheated(bool ch) {
+    overheated = ch;
+}
 
 std::istream& operator>> (std::istream& in, Car& car) {
     std::string name;

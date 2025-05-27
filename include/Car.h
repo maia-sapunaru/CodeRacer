@@ -11,12 +11,14 @@
 class Car {
   static int carNumber;
   static float totalDistance;
+  bool overheated = false;
 
   protected:
     std::string name;
     float speed;
     float fuel;
     int power;
+    float score;
 public:
     Car();
     Car(const std::string& name, float speed, float fuel, int power);
@@ -43,6 +45,15 @@ public:
     void setSpeed(float);
     void setFuel(float);
     void setPower(int);
+
+
+    bool finishedFuel() const;
+    void resetScore();
+
+    float getMaxSpeed() const;
+
+    bool isOverHeated() const;
+    void setOverheated(bool state);
 
 
     friend std::ostream& operator<<(std::ostream& out, const Car& car);
