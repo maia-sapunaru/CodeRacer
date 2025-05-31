@@ -104,7 +104,7 @@ int main() {
             std::cin >> tip;
             std::cout << "Introdu numarul de curbe al pistei: ";
             std::cin >> nrCurbe;
-            std::cout << "Vrei ca vremea sa fie schimbata in mod aleatoriu pe parcursul cursei (1) sa fie constanta (2)?]n" << "Raspunsul tau: ";
+            std::cout << "Vrei ca vremea sa fie schimbata in mod aleatoriu pe parcursul cursei (1) sau sa fie constanta (2)?\n" << "Raspunsul tau: ";
             std::cin >> varianta;
             if (varianta == 1) {
                 schimbat = 1;
@@ -209,8 +209,16 @@ int main() {
 
     } while (opt != 0);
 
-//MAI AM DE FACUT DEZALOCAREA
+    for(int i = 0; i < (int)masini.size(); i++) {
+        delete masini[i];
+    }
+    masini.clear();
+    for (int i = 0; i < (int)stiluri.size(); i++) {
+        delete stiluri[i];
+    }
+    stiluri.clear();
 
+    //mai am de facut dezalocarea pe template si de scos niste functii
     return 0;
 }
 

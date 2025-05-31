@@ -19,6 +19,7 @@ public:
     void add(T* t);
     T* get() const;
     void showOrder() const;
+    //~Raport();
 };
 
 template <typename T>
@@ -26,8 +27,9 @@ Raport<T>::Raport() : pq([](T* a, T* b) {
     return a->getScore() < b->getScore();
 }) {}
 
+//template <typename T>
+//Raport<T>::~Raport() {
 
-//Raport<T>::Raport(std::function<bool(T*, T*) > comp) : pq(comp) {}
 
 template <typename T>
 void Raport<T>::add(T* t) {
