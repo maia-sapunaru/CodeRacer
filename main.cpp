@@ -137,7 +137,7 @@ int main() {
                 std::cout << "Nu avem acest tip de pista!";
             }
 
-            for (int i =0; i < stiluri.size(); i++) {
+            for (int i =0; i < (int)stiluri.size(); i++) {
                 if (ok) {
                     Flexible* flex = dynamic_cast<Flexible*>(stiluri[i]);
                     if (flex != nullptr) {
@@ -152,7 +152,7 @@ int main() {
                 std::cout << "Secunda " << sec << " ---\n";
 
                 try {
-                    for (int i = 0; i < masini.size(); i++) {
+                    for (int i = 0; i < (int)masini.size(); i++) {
                         Car* masina = masini[i];
 
                         if (masina->isOverHeated() || masina->finishedFuel()) {
@@ -218,7 +218,13 @@ int main() {
     }
     stiluri.clear();
 
-    //mai am de facut dezalocarea pe template si de scos niste functii
+    while (!raport.empty()) {
+        delete raport.get();
+        raport.removeTop();
+    }
+
+
+
     return 0;
 }
 

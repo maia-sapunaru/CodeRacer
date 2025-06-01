@@ -15,11 +15,13 @@ class Raport {
 
 public:
     Raport();
-    //Raport(std::function<bool(T*, T*) > comp);
+    ~Raport();
     void add(T* t);
     T* get() const;
     void showOrder() const;
-    //~Raport();
+    bool empty() const;
+    void removeTop();
+
 };
 
 template <typename T>
@@ -27,8 +29,10 @@ Raport<T>::Raport() : pq([](T* a, T* b) {
     return a->getScore() < b->getScore();
 }) {}
 
-//template <typename T>
-//Raport<T>::~Raport() {
+template <typename T>
+Raport<T>::~Raport() {
+
+}
 
 
 template <typename T>
@@ -52,5 +56,16 @@ void Raport<T>::showOrder() const {
       pos++;
     }
 }
+
+template <typename T>
+bool Raport<T>::empty() const {
+    return pq.empty();
+}
+
+template<typename T>
+void Raport<T>::removeTop() {
+    if (!pq.empty()) pq.pop();
+}
+
 
 #endif //RAPORT_H
