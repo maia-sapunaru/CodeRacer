@@ -7,8 +7,8 @@
 #include<ctime>
 #include<cstdlib>
 
-Track::Track(const std::string& type1, const float dif, int nrCurves1, const std::string& weather1) :
- surface(type1), difficulty (dif), nrCurves(nrCurves1), weather(weather1) {
+Track::Track(const std::string& type1, int nrCurves1, float dif, const std::string& weather1) :
+ surface(type1), nrCurves(nrCurves1), difficulty (dif), weather(weather1) {
 
 }
 

@@ -19,7 +19,7 @@ protected:
     float difficulty;
     std::string weather;
 public:
-    Track(const std::string& type, const float difficulty, int nrCurves, const std::string& weather);
+    Track(const std::string& type, int nrCurves, float difficulty, const std::string& weather);
     virtual ~Track();
 
     float getDifficulty() const;
