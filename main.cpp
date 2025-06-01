@@ -4,6 +4,7 @@
 #include <thread>
 #include <chrono>
 #include <Overheated.h>
+#include<fstream>
 
 #include "../include/SportsCar.h"
 #include "../include/TunedSportsCar.h"
@@ -18,6 +19,8 @@
 #include "../include/Race.h"
 
 int main() {
+    std::ifstream fin("date_intrare.txt");
+    std::cin.rdbuf(fin.rdbuf());
     std::vector<Car*> masini;
     std::vector<DrivingTechnique*> stiluri;
     Raport<Race> raport;
@@ -187,7 +190,6 @@ int main() {
 
 
 
-                    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
                 }
                 if (schimbat) pista -> randomWeather();
             }
@@ -199,7 +201,7 @@ int main() {
             raport.add(cursa);
 
 
-            std::cout << "\nRAPORTUL CURSEI: \n"; // merge, dar nu imi place cum arata, voi reface
+            std::cout << "\nRAPORTUL CURSEI: \n";
             raportCursa.showOrder();
             delete pista;
 
