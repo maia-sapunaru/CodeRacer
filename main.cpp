@@ -1,8 +1,6 @@
 #include <iostream>
 #include<algorithm>
 #include <vector>
-#include <thread>
-#include <chrono>
 #include <Overheated.h>
 #include<fstream>
 
