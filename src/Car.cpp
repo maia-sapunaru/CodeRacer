@@ -8,7 +8,7 @@
 int Car::carNumber = 0;
 float Car::totalDistance = 0;
 
-Car::Car() : name(""), speed(0), fuel(0), power(0) {
+Car::Car() : name(""), speed(0), fuel(0), power(0), score(0) {
     carNumber++;
 }
 Car::Car(const std::string& name, float speed, float fuel, int power) : name(name), speed(speed), fuel(fuel), power(power) {
@@ -62,7 +62,7 @@ float Car::getSpeed() const {
 
 
 
-void Car::setName(const std::string nam) {
+void Car::setName(const std::string &nam) {
      name = nam;
 }
 

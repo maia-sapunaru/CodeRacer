@@ -99,7 +99,7 @@ int main() {
             int nrCurbe;
             int varianta;
             bool schimbat = 0;
-            std::string copie, vreme, tip;
+            std::string vreme, tip;
             std::cout << "Ce fel de pista doresti pentru cursa? Optiunile sunt: asfalt sau off-road.\n" << "Raspunsul tau: ";
             std::cin >> tip;
             std::cout << "Introdu numarul de curbe al pistei: ";
@@ -111,6 +111,7 @@ int main() {
                 vreme = "sunny";
             }
             else if (varianta == 2) {
+                std::string copie;
                 std::cout << "Introdu vremea de pe pista. Optiunile sunt: insorit, innorat, ploios.  \n" << "raspunsul tau: ";
                 std::cin >> copie;
                 if (copie == "insorit")
@@ -175,13 +176,13 @@ int main() {
 
 
                 std::vector<Car*> clasament = masini;
-                std::sort(clasament.begin(), clasament.end(), [](Car* const a, Car* const b) {
+                std::sort(clasament.begin(), clasament.end(), [](const Car* a, const Car* b) {
                     return a->getScore() > b->getScore();
                 });
 
                 int loc = 1;
-                for (std::vector<Car*>::iterator i = clasament.begin(); i != clasament.end(); i++) {
-                    Car* m = *i;
+                for (std::vector<Car*>::iterator i = clasament.begin(); i != clasament.end(); ++i) {
+                    const Car* m = *i;
                     std::cout << loc++ << ". " << *m << " | Scor: " << m->getScore() << '\n';
 
 

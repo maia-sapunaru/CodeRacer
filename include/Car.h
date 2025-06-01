@@ -41,7 +41,7 @@ public:
     float getSpeed() const;
     int getPower() const;
 
-    void setName(std::string nam);
+    void setName(const std::string &nam);
     void setSpeed(float);
     void setFuel(float);
     void setPower(int);

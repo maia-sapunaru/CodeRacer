@@ -15,11 +15,11 @@ private:
 
 protected:
     std::string surface;
-    float difficulty;
     int nrCurves;
+    float difficulty;
     std::string weather;
 public:
-    Track(const std::string& type, float specific, int nrCurves, const std::string& weather);
+    Track(const std::string& type, const float difficulty, int nrCurves, const std::string& weather);
     virtual ~Track();
 
     float getDifficulty() const;

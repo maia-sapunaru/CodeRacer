@@ -7,8 +7,8 @@
 #include<ctime>
 #include<cstdlib>
 
-Track::Track(const std::string& type, float difficulty, int nrCurves, const std::string& weather) :
- surface(type), difficulty (getDifficulty()), nrCurves(nrCurves), weather(weather) {
+Track::Track(const std::string& type1, const float dif, int nrCurves1, const std::string& weather1) :
+ surface(type1), difficulty (dif), nrCurves(nrCurves1), weather(weather1) {
 
 }
 
@@ -22,7 +22,7 @@ const std::string& Track::getWeather() const { return weather; }
 //const std::string& Track::getSurface() const { return surface; }
 
 void Track::display(std::ostream& out) const {
-    out << "Track: " << surface << " "  << "Difficulty: " << difficulty << " "  << "Weather: " << weather << " " << "Number of curves: " << nrCurves << "\n";
+    out << "Track: " << surface << " "  << "Weather: " << weather << " " << "Number of curves: " << nrCurves << "\n";
 }
 
 std::ostream& operator<<(std::ostream& out, const Track& track) {
@@ -41,8 +41,8 @@ void Track::notifyObservers() {
   for (TrackObserver* observer : obs) observer->trackUpdate(*this);
 }
 
-void Track::setWeather(const std::string& weather) {
-  this->weather = weather;
+void Track::setWeather(const std::string& newWeather) {
+  weather = newWeather;
   notifyObservers();
 }
 
@@ -58,11 +58,11 @@ void Track::randomWeather() {
   int chance2 = rand() % 2;
   if (chance < 50) {
     std::string newWeather;
-    if (weather == "sunny" && chance2 == 0 || weather == "rainy" && chance2 == 0)
+    if ((weather == "sunny" && chance2 == 0 )|| (weather == "rainy" && chance2 == 0))
       newWeather = "cloudy";
-    else if (weather == "sunny" && chance2 == 1 || weather == "cloudy" && chance2 == 0)
+    else if ((weather == "sunny" && chance2 == 1) ||( weather == "cloudy" && chance2 == 0))
       newWeather = "rainy";
-    else if (weather == "cloudy" && chance2 == 1 || weather == "rainy" && chance2 == 1)
+    else if ((weather == "cloudy" && chance2 == 1) || (weather == "rainy" && chance2 == 1))
       newWeather = "sunny";
 
     setWeather(newWeather);
