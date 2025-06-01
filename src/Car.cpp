@@ -40,11 +40,11 @@ void Car::addDistance(float km) {
 */
 
 
-/*
+
 int Car::getCarNumber() {
     return carNumber;
 }
-*/
+
 
 int Car::getPower() const {
     return power;
@@ -93,7 +93,7 @@ void Car::consumeFuel(float amount) {
 }
 
 void Car::display(std::ostream& out) const {
-    out << "Car: " << name << " " << " Spped: " << speed << " Fuel: " << fuel << "Power" << power;
+    out << "Car: " << name  << " Id: " << getCarNumber() << " Speed: " << speed << " Fuel: " << fuel << " Power" << power;
 }
 
 const std::string& Car::getName() const { return name; }

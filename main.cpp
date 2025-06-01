@@ -175,7 +175,7 @@ int main() {
 
 
                 std::vector<Car*> clasament = masini;
-                std::sort(clasament.begin(), clasament.end(), [](Car* a, Car* b) {
+                std::sort(clasament.begin(), clasament.end(), [](Car* const a, Car* const b) {
                     return a->getScore() > b->getScore();
                 });
 

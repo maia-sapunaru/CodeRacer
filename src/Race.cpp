@@ -8,7 +8,7 @@
 
 
 Race::Race(const std::string& name, const std::vector<Car*>& cars) : raceName(name), cars(cars) {
-    total = (*std::max_element(cars.begin(), cars.end(), [](Car* a, Car* b)
+    total = (*std::max_element(cars.begin(), cars.end(), [](Car* const a, Car* const b)
     {
           return a->getScore() < b->getScore();
     })) ->getScore();

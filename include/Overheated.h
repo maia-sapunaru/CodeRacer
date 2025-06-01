@@ -9,7 +9,7 @@
 
 class Overheated : public std::runtime_error {
 public:
-    Overheated(const std::string& smt) : std::runtime_error(smt) {}
+    explicit Overheated(const std::string& smt) : std::runtime_error(smt) {}
 };
 
 
