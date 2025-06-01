@@ -11,7 +11,7 @@ float Car::totalDistance = 0;
 Car::Car() : name(""), speed(0), fuel(0), power(0), score(0) {
     carNumber++;
 }
-Car::Car(const std::string& name, float speed, float fuel, int power) : name(name), speed(speed), fuel(fuel), power(power) {
+Car::Car(const std::string& name, float speed, float fuel, int power) : name(name), speed(speed), fuel(fuel), power(power), score(0){
     carNumber++;
 }
 Car::~Car() {
@@ -23,6 +23,7 @@ Car& Car::operator=(const Car& rhs) {
     speed = rhs.speed;
     fuel = rhs.fuel;
     power = rhs.power;
+    score = rhs.score;
     return *this;
 }
 
