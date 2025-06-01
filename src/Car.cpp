@@ -26,25 +26,36 @@ Car& Car::operator=(const Car& rhs) {
     return *this;
 }
 
+/*
 float Car::getTotalDistance() {
     return totalDistance;
 }
+*/
 
+
+/*
 void Car::addDistance(float km) {
     totalDistance += km;
 }
+*/
 
+
+/*
 int Car::getCarNumber() {
     return carNumber;
 }
+*/
 
 int Car::getPower() const {
     return power;
 }
 
+
+/*
 float Car::getFuel() const{
     return fuel;
 }
+*/
 float Car::getSpeed() const {
     return speed;
 }

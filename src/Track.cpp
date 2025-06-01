@@ -19,7 +19,7 @@ float Track::getDifficulty() const {
 }
 int Track::getNrCurves() const { return nrCurves; }
 const std::string& Track::getWeather() const { return weather; }
-const std::string& Track::getSurface() const { return surface; }
+//const std::string& Track::getSurface() const { return surface; }
 
 void Track::display(std::ostream& out) const {
     out << "Track: " << surface << " "  << "Difficulty: " << difficulty << " "  << "Weather: " << weather << " " << "Number of curves: " << nrCurves << "\n";
@@ -30,9 +30,13 @@ std::ostream& operator<<(std::ostream& out, const Track& track) {
     return out;
 }
 
+
+/*
 void Track::addObserver (TrackObserver* observer) {
   obs.push_back(observer);
 }
+
+*/
 void Track::notifyObservers() {
   for (TrackObserver* observer : obs) observer->trackUpdate(*this);
 }
@@ -42,10 +46,12 @@ void Track::setWeather(const std::string& weather) {
   notifyObservers();
 }
 
+/*
 void Track::setNrCurves(int nrCurves) {
   this->nrCurves = nrCurves;
   notifyObservers();
 }
+*/
 
 void Track::randomWeather() {
   int chance = rand() % 100;

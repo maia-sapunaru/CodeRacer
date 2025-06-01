@@ -22,9 +22,12 @@ const::std::string& Race::getRaceName() const {
   return raceName;
 }
 
+
+/*
 const std::vector<Car*>& Race::getCars() const {
   return cars;
 }
+*/
 
 std::ostream& operator<<(std::ostream& os, const Race& race) {
   os << "Cursa: " << race.getRaceName() << " | Castigator: " << race.getWinner()->getName() << " ->  Scor castigator: " << race.getScore();
