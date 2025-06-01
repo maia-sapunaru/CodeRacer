@@ -25,7 +25,7 @@ public:
     float getDifficulty() const;
     int getNrCurves() const;
     const std::string& getWeather() const;
-    const std::string& getSurface() const;
+    //const std::string& getSurface() const;
 
     virtual void display(std::ostream& out) const;
 
