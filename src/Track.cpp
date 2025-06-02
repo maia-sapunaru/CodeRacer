@@ -4,7 +4,6 @@
 
 #include "../include/Track.h"
 #include<iostream>
-#include<ctime>
 #include<cstdlib>
 
 Track::Track(const std::string& type1, int nrCurves1, float dif, const std::string& weather1) :
@@ -15,7 +14,7 @@ Track::Track(const std::string& type1, int nrCurves1, float dif, const std::stri
 Track::~Track() {}
 
 float Track::getDifficulty() const {
-  return getNrCurves()%10;
+    return getNrCurves()%10;
 }
 int Track::getNrCurves() const { return nrCurves; }
 const std::string& Track::getWeather() const { return weather; }
@@ -37,13 +36,14 @@ void Track::addObserver (TrackObserver* observer) {
 }
 
 */
+
 void Track::notifyObservers() {
-  for (TrackObserver* observer : obs) observer->trackUpdate(*this);
+    for (TrackObserver* observer : obs) observer->trackUpdate(*this);
 }
 
 void Track::setWeather(const std::string& newWeather) {
-  weather = newWeather;
-  notifyObservers();
+    weather = newWeather;
+    //notifyObservers();
 }
 
 /*
@@ -54,18 +54,18 @@ void Track::setNrCurves(int nrCurves) {
 */
 
 void Track::randomWeather() {
-  int chance = rand() % 100;
-  int chance2 = rand() % 2;
-  if (chance < 50) {
-    std::string newWeather;
-    if ((weather == "sunny" && chance2 == 0 )|| (weather == "rainy" && chance2 == 0))
-      newWeather = "cloudy";
-    else if ((weather == "sunny" && chance2 == 1) ||( weather == "cloudy" && chance2 == 0))
-      newWeather = "rainy";
-    else if ((weather == "cloudy" && chance2 == 1) || (weather == "rainy" && chance2 == 1))
-      newWeather = "sunny";
+    int chance = rand() % 100;
+    int chance2 = rand() % 2;
+    if (chance < 50) {
+        std::string newWeather;
+        if ((weather == "sunny" && chance2 == 0 )|| (weather == "rainy" && chance2 == 0))
+            newWeather = "cloudy";
+        else if ((weather == "sunny" && chance2 == 1) ||( weather == "cloudy" && chance2 == 0))
+            newWeather = "rainy";
+        else if ((weather == "cloudy" && chance2 == 1) || (weather == "rainy" && chance2 == 1))
+            newWeather = "sunny";
 
-    setWeather(newWeather);
+        setWeather(newWeather);
 
-  }
+    }
 }
