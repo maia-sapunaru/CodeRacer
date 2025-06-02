@@ -17,8 +17,7 @@
 #include "../include/Race.h"
 
 int main() {
-    std::ifstream fin("date_intrare.txt");
-    std::cin.rdbuf(fin.rdbuf());
+   
     std::vector<Car*> masini;
     std::vector<DrivingTechnique*> stiluri;
     Raport<Race> raport;
