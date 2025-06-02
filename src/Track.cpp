@@ -43,7 +43,7 @@ void Track::notifyObservers() {
 
 void Track::setWeather(const std::string& newWeather) {
     weather = newWeather;
-    //notifyObservers();
+    notifyObservers();
 }
 
 /*
