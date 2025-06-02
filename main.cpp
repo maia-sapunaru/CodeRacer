@@ -17,7 +17,7 @@
 #include "../include/Race.h"
 
 int main() {
-   
+
     std::vector<Car*> masini;
     std::vector<DrivingTechnique*> stiluri;
     Raport<Race> raport;
@@ -170,6 +170,7 @@ int main() {
                     }
                 } catch (const Overheated& e) {
                     std::cout << e.what() << std::endl;
+                    break;
                 }
 
 
