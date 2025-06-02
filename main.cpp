@@ -170,7 +170,7 @@ int main() {
                         }
                     }
                 } catch (const Overheated& e) {
-                    std::cout << "eroare";
+                    std::cout << e.what() << std::endl;
                 }
 
 

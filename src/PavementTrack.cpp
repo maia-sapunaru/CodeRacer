@@ -5,4 +5,4 @@
 #include "../include/PavementTrack.h"
 
 PavementTrack :: PavementTrack(int nrCurves, const std::string& weather) :
- Track("Pavement", 1.0f, nrCurves, weather) {}
+ Track("Pavement", nrCurves, 1.0f, weather) {}

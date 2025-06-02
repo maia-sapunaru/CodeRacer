@@ -5,4 +5,4 @@
 #include "../include/OffRoadTrack.h"
 
 OffRoadTrack :: OffRoadTrack(int nrCurves, const std::string& weather) :
- Track("OffRoadTrack", 1.5f, nrCurves, weather) {}
+ Track("OffRoadTrack",  nrCurves, 1.5f, weather) {}
